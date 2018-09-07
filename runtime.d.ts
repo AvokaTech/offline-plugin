@@ -42,6 +42,13 @@ export interface InstallOptions {
    * @memberOf InstallOptions
    */
   onUpdated?: () => void;
+
+  /**
+   * A runtime defined public path
+   *
+   * @memberOf InstallOptions
+   */
+  publicPath?: string;
 }
 
 /**

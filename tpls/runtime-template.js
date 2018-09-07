@@ -22,7 +22,7 @@ function install(options) {
         .register(
           <%- JSON.stringify(ServiceWorker.location) %>, {
             <% if (ServiceWorker.scope) { %>
-              scope: <%- JSON.stringify(ServiceWorker.scope) %>,
+              scope: options.publicPath || <%- JSON.stringify(ServiceWorker.scope) %>,
             <% } %>
             <% if (
               ServiceWorker.updateViaCache &&
