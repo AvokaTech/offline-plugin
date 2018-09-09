@@ -18,10 +18,18 @@ function install(options) {
 
   <% if (typeof ServiceWorker !== 'undefined') { %>
     if (hasSW()) {
+      var scope;
+
+      <% if (ServiceWorker.scope) { %>
+        scope = JSON.stringify(ServiceWorker.scope);
+      <% } %>
+
+      scope = options.publicPath || scope;
+
       var registration = navigator.serviceWorker
         .register(
           options.publicPath || <%- JSON.stringify(ServiceWorker.location) %>, {
-            scope: options.publicPath || <%- JSON.stringify(ServiceWorker.scope) %>,
+            scope: scope,
             <% if (
               ServiceWorker.updateViaCache &&
               ServiceWorker.updateViaCache !== 'imports'
