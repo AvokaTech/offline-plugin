@@ -20,9 +20,9 @@ function install(options) {
     if (hasSW()) {
       var registration = navigator.serviceWorker
         .register(
-          <%- JSON.stringify(ServiceWorker.location) %>, {
+          options.publicPath || <%- JSON.stringify(ServiceWorker.location) %>, {
             <% if (ServiceWorker.scope) { %>
-              scope: options.publicPath || <%- JSON.stringify(ServiceWorker.scope) %>,
+              scope: <%- JSON.stringify(ServiceWorker.scope) %>,
             <% } %>
             <% if (
               ServiceWorker.updateViaCache &&
