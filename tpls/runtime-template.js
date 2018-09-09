@@ -21,9 +21,7 @@ function install(options) {
       var registration = navigator.serviceWorker
         .register(
           options.publicPath || <%- JSON.stringify(ServiceWorker.location) %>, {
-            if (options.publicPath || <%- ServiceWorker.scope %>) {
-              scope: options.publicPath || <%- JSON.stringify(ServiceWorker.scope) %>,
-            <% } %>
+            scope: options.publicPath || <%- JSON.stringify(ServiceWorker.scope) %>,
             <% if (
               ServiceWorker.updateViaCache &&
               ServiceWorker.updateViaCache !== 'imports'
