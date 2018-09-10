@@ -19,6 +19,9 @@ function install(options) {
   <% if (typeof ServiceWorker !== 'undefined') { %>
     if (hasSW()) {
       var scope;
+      var registerPath = options.publicPath
+        ? options.publicPath + <%- JSON.stringify(ServiceWorker.location) %>
+        : <%- JSON.stringify(ServiceWorker.location) %>;
 
       <% if (ServiceWorker.scope) { %>
         scope = JSON.stringify(ServiceWorker.scope);
@@ -28,7 +31,7 @@ function install(options) {
 
       var registration = navigator.serviceWorker
         .register(
-          options.publicPath || <%- JSON.stringify(ServiceWorker.location) %>, {
+          registerPath, {
             scope: scope,
             <% if (
               ServiceWorker.updateViaCache &&
