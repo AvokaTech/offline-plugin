@@ -29,8 +29,6 @@ function install(options) {
         scope = JSON.stringify(ServiceWorker.scope);
       <% } %>
 
-      scope = options.publicPath || scope;
-
       var registration = navigator.serviceWorker
         .register(
           registerPath, {
