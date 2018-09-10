@@ -20,7 +20,7 @@ function install(options) {
     if (hasSW()) {
       var scope;
       var registerPath = options.publicPath
-        ? options.publicPath + <%- JSON.stringify(ServiceWorker.location).replace(/^\//, "") %>
+        ? options.publicPath + <%- JSON.stringify(ServiceWorker.location).replace(/\\/, "") %>
         : <%- JSON.stringify(ServiceWorker.location) %>;
 
       console.log(<%- JSON.stringify(ServiceWorker) %>)
