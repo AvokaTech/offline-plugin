@@ -23,7 +23,7 @@ function install(options) {
         ? options.publicPath + <%- JSON.stringify(ServiceWorker.location) %>
         : <%- JSON.stringify(ServiceWorker.location) %>;
 
-      console.log(<%- ServiceWorker %>)
+      console.log(<%- JSON.stringify(ServiceWorker) %>)
 
       <% if (ServiceWorker.scope) { %>
         scope = JSON.stringify(ServiceWorker.scope);
